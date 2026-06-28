@@ -129,7 +129,7 @@ export async function getTokenHolders(
   connection: Connection,
 ): Promise<TokenHolder[]> {
   logger.separator('AIRDROP', 'TAKING HOLDER SNAPSHOT');
-  logger.info('AIRDROP', `Querying all holders of mint: ${config.tokenMintAddress.toBase58()}`);
+  logger.info('AIRDROP', `Querying all holders of mint: ${config.holderTokenMint.toBase58()}`);
 
   // ---------------------------------------------------------------------------
   // Query all SPL token accounts for our mint
@@ -149,7 +149,7 @@ export async function getTokenHolders(
           {
             memcmp: {
               offset: 0,   // Mint address starts at byte 0
-              bytes: config.tokenMintAddress.toBase58(),
+              bytes: config.holderTokenMint.toBase58(),
             },
           },
         ],

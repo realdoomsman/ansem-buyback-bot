@@ -65,7 +65,10 @@ export interface BotConfig {
   feeWalletAddress: PublicKey;
 
   // --- Token ---
+  /** The token to BUY BACK with SOL (Ansem Army) */
   tokenMintAddress: PublicKey;
+  /** The token whose HOLDERS receive the airdrop (Ansem) */
+  holderTokenMint: PublicKey;
 
   // --- Bot Parameters ---
   /** Minimum SOL (lamports) to trigger a buy-back */
@@ -127,6 +130,8 @@ export function loadConfig(): BotConfig {
 
   const tokenMintStr = process.env.TOKEN_MINT_ADDRESS || 'EPD8jj7bVhNh3o7Wx1XZ39aaacSki8p2ABaN61yhUnBh';
 
+  const holderMintStr = process.env.AIRDROP_HOLDER_MINT || '9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump';
+
   // Fail fast if required values are missing
   if (errors.length > 0) {
     logger.error('SYSTEM', 'Configuration validation failed:', errors);
@@ -158,6 +163,13 @@ export function loadConfig(): BotConfig {
     throw new Error(`TOKEN_MINT_ADDRESS is not a valid Solana public key: ${tokenMintStr}`);
   }
 
+  let holderTokenMint: PublicKey;
+  try {
+    holderTokenMint = new PublicKey(holderMintStr);
+  } catch {
+    throw new Error(`AIRDROP_HOLDER_MINT is not a valid Solana public key: ${holderMintStr}`);
+  }
+
   // --- Parse optional numeric values with defaults ---
   const config: BotConfig = {
     rpcUrl: rpcUrl!,
@@ -165,6 +177,7 @@ export function loadConfig(): BotConfig {
     walletKeypair,
     feeWalletAddress,
     tokenMintAddress,
+    holderTokenMint,
     minSolThreshold: parseInt(process.env.MIN_SOL_THRESHOLD || '50000000', 10),
     reservedSolForFees: parseInt(process.env.RESERVED_SOL_FOR_FEES || '10000000', 10),
     pollingIntervalMs: parseInt(process.env.POLLING_INTERVAL_MS || '30000', 10),
@@ -180,7 +193,8 @@ export function loadConfig(): BotConfig {
   logger.info('SYSTEM', 'Configuration loaded successfully:', {
     rpcUrl: config.rpcUrl.replace(/\/\/.*@/, '//***@'),  // Redact API keys in URL
     feeWallet: config.feeWalletAddress.toBase58(),
-    tokenMint: config.tokenMintAddress.toBase58(),
+    buybackToken: config.tokenMintAddress.toBase58(),
+    holderToken: config.holderTokenMint.toBase58(),
     minSolThreshold: `${config.minSolThreshold / LAMPORTS_PER_SOL} SOL`,
     reservedForFees: `${config.reservedSolForFees / LAMPORTS_PER_SOL} SOL`,
     slippageBps: config.slippageBps,
