@@ -1,0 +1,27 @@
+{
+  "name": "ansem-buyback-airdrop-bot",
+  "version": "1.0.0",
+  "description": "Automated Buy-Back & Airdrop Bot for $ANSEM CTO — monitors Pump.fun creator fees, buys back tokens via Jupiter with Jito MEV protection, and airdrops to holders.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": ["solana", "buyback", "airdrop", "pump-fun", "cto", "jito", "mev-protection"],
+  "license": "MIT",
+  "dependencies": {
+    "@solana/web3.js": "^1.98.0",
+    "@solana/spl-token": "^0.4.9",
+    "axios": "^1.7.9",
+    "bs58": "^6.0.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

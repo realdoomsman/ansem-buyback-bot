@@ -1,0 +1,17 @@
+# =============================================================================
+# $ANSEM Buy-Back & Airdrop Bot — Railway Deployment Configuration
+# =============================================================================
+# Railway will use these settings to build and deploy the bot.
+# Environment variables should be set in the Railway dashboard.
+# =============================================================================
+
+[build]
+builder = "nixpacks"
+buildCommand = "npm ci && npm run build"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 5
