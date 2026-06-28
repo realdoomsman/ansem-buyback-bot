@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="$ANSEM Buy-Back & Airdrop Bot — Fully transparent, automated buy-back and token distribution for the $ANSEM community CTO on Pump.fun.">
+  <meta name="keywords" content="ANSEM, Solana, buy-back, airdrop, Pump.fun, CTO, community, MEV protection, Jito">
+  <title>$ANSEM Buy-Back & Airdrop</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🅰</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <!-- ====================================================================
+       NAVIGATION
+       ==================================================================== -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">A</div>
+        <span class="nav-logo-text">$ANSEM</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#stats">Dashboard</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#protection">MEV Protection</a></li>
+        <li><a href="#activity">Activity</a></li>
+        <li><a href="https://github.com/realdoomsman/ansem-buyback-bot" target="_blank" rel="noopener" class="nav-cta">⭐ GitHub</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====================================================================
+       HERO
+       ==================================================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        Bot Active — Monitoring Fee Wallet
+      </div>
+
+      <h1>
+        <span class="gradient-text">$ANSEM</span><br>
+        Buy-Back & Airdrop
+      </h1>
+
+      <p class="hero-subtitle">
+        Pump.fun creator fees are automatically used to buy back $ANSEM tokens
+        and airdrop them to every holder. Fully transparent. Open source.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://github.com/realdoomsman/ansem-buyback-bot" target="_blank" rel="noopener" class="btn-primary">
+          📂 View Source Code
+        </a>
+        <a href="#how-it-works" class="btn-secondary">
+          🔍 How It Works
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       STATS
+       ==================================================================== -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid stagger-children">
+
+        <div class="stat-card">
+          <div class="stat-icon cyan">💰</div>
+          <div class="stat-label">Total SOL Spent</div>
+          <div class="stat-value">
+            <span data-counter="0" data-suffix=" SOL">0 SOL</span>
+          </div>
+          <div class="stat-change positive">Waiting for first cycle</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon purple">🪂</div>
+          <div class="stat-label">Tokens Distributed</div>
+          <div class="stat-value">
+            <span data-counter="0" data-suffix=" $ANSEM">0 $ANSEM</span>
+          </div>
+          <div class="stat-change positive">Pro-rata to all holders</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">👥</div>
+          <div class="stat-label">Token Holders</div>
+          <div class="stat-value">
+            <span data-counter="0" data-suffix="">—</span>
+          </div>
+          <div class="stat-change positive">All eligible for airdrops</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon gradient">🤖</div>
+          <div class="stat-label">Bot Status</div>
+          <div class="stat-value" style="color: var(--success); font-size: 22px;">
+            ● Online
+          </div>
+          <div class="stat-change positive">MEV Protected via Jito</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       HOW IT WORKS
+       ==================================================================== -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-tag">Transparent Process</div>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">
+          Every step is automated, verifiable on-chain, and protected against MEV extraction.
+        </p>
+      </div>
+
+      <div class="steps-grid stagger-children">
+
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">👁️</div>
+          <h3>Monitor Fees</h3>
+          <p>
+            The bot watches the designated fee wallet 24/7 via WebSocket.
+            When Pump.fun creator fees arrive as SOL, it detects them instantly.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">🔄</div>
+          <h3>Buy-Back $ANSEM</h3>
+          <p>
+            The SOL is swapped for $ANSEM tokens via Jupiter Aggregator,
+            finding the best price across all Solana DEXes.
+            Submitted privately through Jito bundles.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">🎁</div>
+          <h3>Airdrop to Holders</h3>
+          <p>
+            Purchased tokens are distributed pro-rata to all $ANSEM holders.
+            Hold 10% of supply? You get 10% of the airdrop. Simple.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       MEV PROTECTION
+       ==================================================================== -->
+  <section id="protection">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-tag">Security</div>
+        <h2 class="section-title">3-Layer MEV Protection</h2>
+        <p class="section-desc">
+          Every buy-back is shielded from sandwich attacks and front-running bots.
+        </p>
+      </div>
+
+      <div class="protection-grid stagger-children">
+
+        <div class="protection-card">
+          <div class="layer-badge l1">🛡️ Layer 1</div>
+          <h3>Jito Private Bundles</h3>
+          <p>
+            Swap transactions are submitted directly to Jito validators as private bundles.
+            They never appear in the public mempool where MEV bots watch.
+            The swap is invisible until it's already confirmed on-chain.
+          </p>
+        </div>
+
+        <div class="protection-card">
+          <div class="layer-badge l2">⚡ Layer 2</div>
+          <h3>Strict Slippage Control</h3>
+          <p>
+            Every swap has a maximum slippage tolerance of 0.5%.
+            If the price moves more than this between the quote and execution,
+            the transaction automatically reverts — limiting any potential damage.
+          </p>
+        </div>
+
+        <div class="protection-card">
+          <div class="layer-badge l3">📊 Layer 3</div>
+          <h3>Price Impact Check</h3>
+          <p>
+            Before executing, the bot validates Jupiter's price impact report.
+            If the swap would move the price more than 5%, it's rejected.
+            This prevents buying during extremely illiquid conditions.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       RECENT ACTIVITY
+       ==================================================================== -->
+  <section id="activity">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-tag">Live Feed</div>
+        <h2 class="section-title">Recent Activity</h2>
+        <p class="section-desc">
+          Every buy-back and airdrop is logged and verifiable on Solscan.
+        </p>
+      </div>
+
+      <div id="activity-feed" class="activity-feed animate-on-scroll">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Contract Address -->
+      <div class="contract-bar animate-on-scroll">
+        <span class="contract-label">Token Contract:</span>
+        <code class="contract-address">EPD8jj7bVhNh3o7Wx1XZ39aaacSki8p2ABaN61yhUnBh</code>
+        <button class="copy-btn">📋 Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       FOOTER
+       ==================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/realdoomsman/ansem-buyback-bot" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://solscan.io/token/EPD8jj7bVhNh3o7Wx1XZ39aaacSki8p2ABaN61yhUnBh" target="_blank" rel="noopener">Solscan</a>
+        <a href="https://pump.fun" target="_blank" rel="noopener">Pump.fun</a>
+        <a href="https://jup.ag" target="_blank" rel="noopener">Jupiter</a>
+        <a href="https://jito.wtf" target="_blank" rel="noopener">Jito</a>
+      </div>
+      <p class="footer-text">
+        $ANSEM Community CTO — Fully transparent, open-source buy-back & airdrop system.
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
